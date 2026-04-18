@@ -1,4 +1,4 @@
-package uce.edu.pa2.api.bodega;
+package uce.edu.pa2.api.bodega.modelo;
 
 public class Pedido {
     private String cliente;
@@ -16,6 +16,15 @@ public class Pedido {
         this.producto = producto;
         this.total = total;
         this.destino = destino;
+    }
+
+    
+
+    public Pedido(String cliente, String producto, double total) {
+        this.cliente = cliente;
+        this.producto = producto;
+        this.total = total;
+        this.destino = (destino != null) ? destino : "";
     }
 
     // Metodos SET y GET
