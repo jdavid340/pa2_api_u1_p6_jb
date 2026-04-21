@@ -3,43 +3,71 @@ package uce.edu.pa2.api.bodega;
 import io.quarkus.runtime.Quarkus;
 import io.quarkus.runtime.QuarkusApplication;
 import jakarta.inject.Inject;
-import uce.edu.pa2.api.bodega.modelo.Pedido;
-import uce.edu.pa2.api.bodega.pago.PagoEfectivo;
-import uce.edu.pa2.api.bodega.pago.PagoTarjetaCredito;
-import uce.edu.pa2.api.bodega.service.PedidoService;
+import uce.edu.pa2.api.bodega.ambitos.AmbitoAplicacion;
+import uce.edu.pa2.api.bodega.ambitos.AmbitoInject;
+import uce.edu.pa2.api.bodega.ambitos.AmbitoRequest;
+import uce.edu.pa2.api.bodega.ambitos.AmbitoSingleton;
+import uce.edu.pa2.api.bodega.ambitos.ClaseIntermedia;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-         Quarkus.run(App.class, args);
+        Quarkus.run(App.class, args);
     }
 
-    public static class App implements QuarkusApplication{
-        
-        /* Modelos IoC 
-         1 D.I*/
-        @Inject
-        private PedidoService pedidoService;
-
-        //2. Service Locator o Lookup
-        //private PedidoService pedidoService=CDI.current().select(PedidoService.class).get();
+    public static class App implements QuarkusApplication {
 
         @Inject
-        private PagoEfectivo pagoE;
+        private AmbitoAplicacion ambitoAplicacion;
 
-        @Inject PagoTarjetaCredito pagoTc;
+        @Inject
+        private ClaseIntermedia claseIntermedia;
+
+        @Inject
+        private AmbitoRequest ambitoRequest;
+
+        @Inject
+        private AmbitoInject ambitoInject;
+
+        @Inject
+        private AmbitoSingleton ambitoSingleton;
 
         @Override
-        public int run(String... args){
+        public int run(String... args) {
+            
+            System.out.println("----------Ambito Application----------");
 
-            Pedido pedido1 = new Pedido("Josue Bailon", "PS5", 2500, "jb@gmail.com");
-            this.pedidoService.registrar(pedido1,pagoE);
+            this.ambitoAplicacion.incrementar();
+            this.ambitoAplicacion.incrementar();
+            this.ambitoAplicacion.incrementar();
+            int valor = this.ambitoAplicacion.incrementar();
 
-            Pedido pedido2 = new Pedido("Josue Bailon", "PS5", 100);
-            this.pedidoService.registrar(pedido2, pagoTc);
+            System.out.println(valor);
+
+            this.claseIntermedia.imprimirObjetoValor();
+            System.out.println(ambitoAplicacion);
+            
+            /* 
+            System.out.println("-----------Ambito Request------------");
+            System.out.println(this.ambitoRequest.incrementar());
+            */
+
+            System.out.println("----------Ambito Dependent----------");
+            System.out.println(this.ambitoInject.incrementar());
+            System.out.println(this.ambitoInject.incrementar());
+            System.out.println(this.ambitoInject.incrementar());
+            System.out.println(this.ambitoInject.incrementar());
+
+            this.claseIntermedia.imprimirObjetoValor();
+
+            System.out.println("------Ambito Singleton-------");
+            System.out.println(ambitoSingleton.incrementar());
+            System.out.println(ambitoSingleton.incrementar());
+            System.out.println(ambitoSingleton.incrementar());
+            
+            this.claseIntermedia.imprimirObjetoValorSingleton();
 
             return 0;
         }
     }
-
 
 }
