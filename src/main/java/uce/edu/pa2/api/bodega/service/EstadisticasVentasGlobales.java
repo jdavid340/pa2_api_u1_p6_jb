@@ -13,6 +13,7 @@ public class EstadisticasVentasGlobales {
     }
 
     public void mostrarEstadisticasGlobales(){
+        System.out.println();
         System.out.println("ESTADISTICAS GLOBALES");
         System.out.println("Cantidad Ventas: " +this.totalVentas);
         System.out.println("Valor Total Vendido: " +this.montoTotalVendido);

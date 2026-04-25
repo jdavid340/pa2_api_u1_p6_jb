@@ -2,10 +2,12 @@ package uce.edu.pa2.api.bodega.util;
 
 import jakarta.enterprise.context.Dependent;
 
-@Dependent
+@Dependent  
 public class TrakingVenta {
-    private long tiempoInicio=0;
-    private long tiempoFinal=0;
+    private long tiempoInicio = 0;
+    private long tiempoFinal = 0;
+    private long tiempoTotalAcumulado = 0;
+    private int numeroOperaciones = 0;
 
     public void iniciar() {
         this.tiempoInicio = System.currentTimeMillis();
@@ -13,8 +15,15 @@ public class TrakingVenta {
 
     public void finalizar() {
         this.tiempoFinal = System.currentTimeMillis();
-        long tiempoEjecucion = tiempoFinal - this.tiempoInicio;
-        System.out.println("Tiempo Ejecucion: " + tiempoEjecucion);
+        long tiempoEjecucion = tiempoFinal - tiempoInicio;
+
+        this.tiempoTotalAcumulado += tiempoEjecucion;
+        this.numeroOperaciones++;
+
+        System.out.println("Tiempo ejecución: " + tiempoEjecucion + "ms");
+        System.out.println("Tiempo acumulado: " + this.tiempoTotalAcumulado + "ms");
+        System.out.println("Cantidad de operaciones: " + this.numeroOperaciones);
+
     }
 
 }
