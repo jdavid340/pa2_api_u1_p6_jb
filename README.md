@@ -1,62 +1,28 @@
-# pa2_api_u1_p6_jb
+## Ejemplos de Scopes en Beans
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+### 1. ApplicationScoped
+1. **Contador de usuarios conectados**  
+2. **Sistema de notificaciones globales**  
+3. **Acumulador de estadísticas de ventas**  
+4. **Gestor de inventario**  
+5. **Administrador de colas de mensajería**  
+6. **Motor de reglas de descuento**  
+7. **Almacenamiento de datos de autenticación**  
 
-If you want to learn more about Quarkus, please visit its website: <https://quarkus.io/>.
+### 2. Singleton
+1. **Convertidor de moneda**  
+2. **Generador de códigos QR**  
+3. **Validador de tarjetas de crédito**  
+4. **Mapper de objetos**  
+5. **Utilidad de encriptación**  
+6. **Compresor de archivos**  
+7. **Parser de fechas**  
 
-## Running the application in dev mode
-
-You can run your application in dev mode that enables live coding using:
-
-```shell script
-./mvnw quarkus:dev
-```
-
-> **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at <http://localhost:8080/q/dev/>.
-
-## Packaging and running the application
-
-The application can be packaged using:
-
-```shell script
-./mvnw package
-```
-
-It produces the `quarkus-run.jar` file in the `target/quarkus-app/` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `target/quarkus-app/lib/` directory.
-
-The application is now runnable using `java -jar target/quarkus-app/quarkus-run.jar`.
-
-If you want to build an _über-jar_, execute the following command:
-
-```shell script
-./mvnw package -Dquarkus.package.jar.type=uber-jar
-```
-
-The application, packaged as an _über-jar_, is now runnable using `java -jar target/*-runner.jar`.
-
-## Creating a native executable
-
-You can create a native executable using:
-
-```shell script
-./mvnw package -Dnative
-```
-
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using:
-
-```shell script
-./mvnw package -Dnative -Dquarkus.native.container-build=true
-```
-
-You can then execute your native executable with: `./target/pa2_api_u1_p6_jb-1.0.0-SNAPSHOT-runner`
-
-If you want to learn more about building native executables, please consult <https://quarkus.io/guides/maven-tooling>.
-
-## Provided Code
-
-### REST
-
-Easily start your REST Web Services
-
-[Related guide section...](https://quarkus.io/guides/getting-started-reactive#reactive-jax-rs-resources)
+### 3. Dependent
+1. **HttpClient con timeout variable**  
+2. **Generador de ID**  
+3. **Helper de procesamiento de lotes**  
+4. **Validador de formulario**  
+5. **Temporizador de rendimiento**  
+6. **Filtro de búsqueda dinámico**  
+7. **Token de verificación único**  
