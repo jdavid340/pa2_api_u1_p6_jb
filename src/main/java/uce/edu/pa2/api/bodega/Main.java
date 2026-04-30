@@ -4,7 +4,6 @@ import io.quarkus.runtime.Quarkus;
 import io.quarkus.runtime.QuarkusApplication;
 import jakarta.inject.Inject;
 import uce.edu.pa2.api.bodega.modelo.Venta;
-import uce.edu.pa2.api.bodega.service.InventarioService;
 import uce.edu.pa2.api.bodega.service.ProcesadorVentaServiceTiempo;
 
 public class Main {
@@ -17,16 +16,13 @@ public class Main {
         @Inject
         private ProcesadorVentaServiceTiempo procesadorVentaServiceTiempo;
 
-        @Inject
-        private InventarioService inventarioService;
-
         @Override
         public int run(String... args) {
             Venta v1 = new Venta("Josue Bailon", 550);
             Venta v2 = new Venta("Erick Pasmiño", 450);
          
             this.procesadorVentaServiceTiempo.procesar(v1);
-            this.inventarioService.registrarInventario(v2);
+        //    this.procesadorVentaServiceTiempo.reProcesar(v2);
 
             return 0;
         }

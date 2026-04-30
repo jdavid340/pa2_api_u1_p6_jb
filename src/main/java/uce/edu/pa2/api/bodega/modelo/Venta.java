@@ -22,5 +22,11 @@ public class Venta {
         this.total = total;
     }
 
+    @Override
+    public String toString() {
+        return "Venta [cliente=" + cliente + ", total=" + total + "]";
+    }
+
+    
     
 }

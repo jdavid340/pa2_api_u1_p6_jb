@@ -2,6 +2,7 @@ package uce.edu.pa2.api.bodega.service;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import uce.edu.pa2.api.bodega.anotaciones.Log;
 import uce.edu.pa2.api.bodega.anotaciones.MedirTiempo;
 import uce.edu.pa2.api.bodega.modelo.Venta;
 
@@ -12,6 +13,7 @@ public class ProcesadorVentaServiceTiempo {
     private EstadisticasVentasGlobales estadisticasVentasGlobales;
 
     @MedirTiempo
+    @Log
     public void procesar(Venta venta) {
         System.out.println("Procesando Pedido");
         try {

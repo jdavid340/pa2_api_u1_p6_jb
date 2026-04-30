@@ -8,12 +8,13 @@ import uce.edu.pa2.api.bodega.anotaciones.MedirTiempo;
 
 @MedirTiempo
 @Interceptor
-@Priority(Interceptor.Priority.APPLICATION)
+@Priority(2)
 public class MedirTiempoInterceptor {
 
     @AroundInvoke
     public Object medir(InvocationContext context) throws Exception {
         System.out.println("Se ejecuto antes del metodo");
+        System.out.println("Metodo Interceptado: "+ context.getMethod().getName());
         long inicio = System.currentTimeMillis();
         // Inicia la ejecucion del metodo
         Object resultado = context.proceed();
