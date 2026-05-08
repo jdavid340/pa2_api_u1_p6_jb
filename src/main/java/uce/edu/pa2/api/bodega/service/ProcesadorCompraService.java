@@ -19,7 +19,7 @@ public class ProcesadorCompraService {
     public void procesar(Compra compra) {
         double total = compra.getSubTotal();
         for (IDescuento des : descuentos) {
-           // total = des.aplicar(total);
+            total = des.aplicar(total);
         }
 
         for (IImpuesto imp : impuestos) {
